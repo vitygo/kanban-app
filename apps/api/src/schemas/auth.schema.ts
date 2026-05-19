@@ -1,9 +1,9 @@
 import { z } from 'zod'
 
 export const registerSchema = z.object({
-  name: z.string().min(2, 'Мінімум 2 символи'),
-  email: z.string().email('Невалідний email'),
-  password: z.string().min(8, 'Мінімум 8 символів'),
+  name: z.string().min(2, 'min 2symbols'),
+  email: z.string().email('invalid email'),
+  password: z.string().min(8, 'min 8 symbols'),
 })
 
 export const loginSchema = z.object({
@@ -15,6 +15,6 @@ export const refreshSchema = z.object({
   refreshToken: z.string().min(1),
 })
 
-// Типи з схем — не пишемо інтерфейси вручну
+
 export type RegisterInput = z.infer<typeof registerSchema>
 export type LoginInput = z.infer<typeof loginSchema>

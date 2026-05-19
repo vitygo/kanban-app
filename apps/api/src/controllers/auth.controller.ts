@@ -11,7 +11,7 @@ export const register = async (req: Request, res: Response) => {
   try {
     const existing = await prisma.user.findUnique({ where: { email } })
     if (existing) {
-      return res.status(409).json({ error: 'Email вже використовується' })
+      return res.status(409).json({ error: 'Email is in use' })
     }
 
     const passwordHash = await bcrypt.hash(password, 12)
@@ -40,10 +40,9 @@ export const login = async (req: Request, res: Response) => {
     try {
       const user = await prisma.user.findUnique({ where: { email } })
   
-      // Однакова помилка для "немає юзера" і "неправильний пароль"
-      // — не даємо зрозуміти чи існує акаунт
+  
       if (!user || !(await bcrypt.compare(password, user.passwordHash))) {
-        return res.status(401).json({ error: 'Невірний email або пароль' })
+        return res.status(401).json({ error: 'wrong email or passwordd' })
       }
   
       const accessToken = signAccessToken(user.id)
@@ -79,14 +78,13 @@ export const refresh = async (req: Request, res: Response) => {
   
       return res.json({ accessToken, refreshToken: newRefreshToken })
     } catch {
-      // verifyRefreshToken кидає помилку якщо токен протермінований або невалідний
+
       return res.status(401).json({ error: 'Invalid refresh token' })
     }
   }
   
-  // POST /api/auth/logout
+
   export const logout = (_req: Request, res: Response) => {
-    // З JWT на бекенді немає стану — просто повертаємо 204
-    // Фронт сам видаляє токени зі сховища
+
     return res.status(204).send()
   }
