@@ -6,7 +6,7 @@ import {
     useSensors,
     closestCorners,
   } from '@dnd-kit/core'
-  import type { DragEndEvent, DragOverEvent } from '@dnd-kit/core'
+import type { DragEndEvent, DragOverEvent } from '@dnd-kit/core'
 import { KanbanColumn } from './KanbanColumn'
 import { CardModal } from './CardModal'
 import { ColumnModal } from './ColumnModal'
@@ -22,6 +22,7 @@ import {
 } from '../hooks/useBoard'
 import type { Card, Column } from '@/api'
 import styles from './KanbanBoard.module.css'
+import { toast } from 'sonner'
 
 interface KanbanBoardProps {
   boardId: string
@@ -128,7 +129,16 @@ export const KanbanBoard = ({ boardId }: KanbanBoardProps) => {
               onAddCard={(columnId) => setCardModal({ mode: 'create', columnId })}
               onEditCard={(card) => setCardModal({ mode: 'edit', card })}
               onDeleteCard={(id) => {
-                if (confirm('Delete this card?')) deleteCard.mutate(id)
+                toast('Delete this card?', {
+                  action: {
+                    label: 'Delete',
+                    onClick: () => deleteCard.mutate(id),
+                  },
+                  cancel: {
+                    label: 'Cancel',
+                    onClick: () => {},
+                  },
+                })
               }}
               onEditColumn={(column) => setColumnModal({ mode: 'edit', column })}
               onDeleteColumn={(id) => deleteColumn.mutate(id)}

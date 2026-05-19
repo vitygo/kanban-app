@@ -1,4 +1,5 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
+import { toast } from 'sonner'
 import { boardsApi } from '@/api'
 
 export const useBoards = () => {
@@ -15,6 +16,10 @@ export const useCreateBoard = () => {
     mutationFn: boardsApi.create,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['boards'] })
+      toast.success('Board created')
+    },
+    onError: () => {
+      toast.error('Failed to create board')
     },
   })
 }
@@ -27,6 +32,10 @@ export const useUpdateBoard = () => {
       boardsApi.update(id, data),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['boards'] })
+      toast.success('Board updated')
+    },
+    onError: () => {
+      toast.error('Failed to update board')
     },
   })
 }
@@ -38,6 +47,10 @@ export const useDeleteBoard = () => {
     mutationFn: boardsApi.remove,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['boards'] })
+      toast.success('Board deleted')
+    },
+    onError: () => {
+      toast.error('Failed to delete board')
     },
   })
 }

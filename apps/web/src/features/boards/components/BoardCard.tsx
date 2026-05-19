@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { formatDistanceToNow } from 'date-fns'
+
 import { useDeleteBoard } from '../hooks/useBoards'
 import { EditBoardModal } from './EditBoardModal'
 import type { Board } from '@/api'
 import styles from './BoardCard.module.css'
-
+import { toast } from 'sonner'
+import { formatDistanceToNow } from 'date-fns'
 const ACCENT_COLORS = [
   '#6366f1', '#0f6e56', '#993c1d', '#0c447c',
   '#633806', '#72243e', '#3b6d11', '#a32d2d',
@@ -27,9 +28,16 @@ export const BoardCard = ({ board }: BoardCardProps) => {
 
   const handleDelete = (e: React.MouseEvent) => {
     e.stopPropagation()
-    if (confirm('Delete this board?')) {
-      deleteBoard.mutate(board.id)
-    }
+    toast('Delete this board?', {
+      action: {
+        label: 'Delete',
+        onClick: () => deleteBoard.mutate(board.id),
+      },
+      cancel: {
+        label: 'Cancel',
+        onClick: () => {},
+      },
+    })
   }
 
   const handleEdit = (e: React.MouseEvent) => {

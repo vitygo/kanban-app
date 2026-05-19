@@ -3,6 +3,7 @@ import { useDroppable } from '@dnd-kit/core'
 import { KanbanCard } from './KanbanCard'
 import type { Column, Card } from '@/api'
 import styles from './KanbanColumn.module.css'
+import { toast } from 'sonner'
 
 interface KanbanColumnProps {
   column: Column
@@ -39,16 +40,23 @@ export const KanbanColumn = ({
             <i className="ti ti-edit" aria-hidden="true" />
           </button>
           <button
-            className={`${styles.actionBtn} ${styles.deleteBtn}`}
-            onClick={() => {
-              if (confirm('Delete this column and all its cards?')) {
-                onDeleteColumn(column.id)
-              }
-            }}
-            aria-label="Delete column"
-          >
-            <i className="ti ti-trash" aria-hidden="true" />
-          </button>
+  className={`${styles.actionBtn} ${styles.deleteBtn}`}
+  onClick={() => {
+    toast('Delete this column and all its cards?', {
+      action: {
+        label: 'Delete',
+        onClick: () => onDeleteColumn(column.id),
+      },
+      cancel: {
+        label: 'Cancel',
+        onClick: () => {},
+      },
+    })
+  }}
+  aria-label="Delete column"
+>
+  <i className="ti ti-trash" aria-hidden="true" />
+</button>
         </div>
       </div>
 
