@@ -1,0 +1,67 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  name         String
+  passwordHash String
+  createdAt    DateTime @default(now())
+  boards       Board[]
+}
+
+model Board {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  userId      String
+  createdAt   DateTime @default(now())
+  user        User     @relation(fields: [userId], references: [id])
+  columns     Column[]
+}
+
+model Column {
+  id       String @id @default(cuid())
+  title    String
+  order    Float
+  wipLimit Int?
+  boardId  String
+  board    Board  @relation(fields: [boardId], references: [id], onDelete: Cascade)
+  cards    Card[]
+}
+
+model Card {
+  id          String      @id @default(cuid())
+  title       String
+  description String?
+  priority    String      @default("medium")
+  dueDate     DateTime?
+  order       Float
+  columnId    String
+  createdAt   DateTime    @default(now())
+  column      Column      @relation(fields: [columnId], references: [id], onDelete: Cascade)
+  tags        Tag[]
+  timeEntries TimeEntry[]
+}
+
+model Tag {
+  id     String @id @default(cuid())
+  label  String
+  color  String
+  cardId String
+  card   Card   @relation(fields: [cardId], references: [id], onDelete: Cascade)
+}
+
+model TimeEntry {
+  id        String    @id @default(cuid())
+  startedAt DateTime
+  stoppedAt DateTime?
+  cardId    String
+  card      Card      @relation(fields: [cardId], references: [id], onDelete: Cascade)
+}
