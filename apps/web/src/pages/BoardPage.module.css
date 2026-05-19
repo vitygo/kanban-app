@@ -1,0 +1,21 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  .content {
+    flex: 1;
+    padding: 24px;
+    overflow-x: auto;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  @media (max-width: 768px) {
+    .content {
+      padding: 12px;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+  }

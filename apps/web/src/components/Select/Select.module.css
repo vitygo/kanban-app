@@ -1,0 +1,84 @@
+.wrapper {
+    position: relative;
+  }
+  
+  .trigger {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: inherit;
+    background: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: border-color 0.15s;
+    color: #1a1a1a;
+  }
+  
+  .trigger:hover {
+    border-color: #9ca3af;
+  }
+  
+  .trigger.open {
+    border-color: #6366f1;
+  }
+  
+  .arrow {
+    font-size: 16px;
+    color: #6b7280;
+    transition: transform 0.15s;
+  }
+  
+  .arrow.open {
+    transform: rotate(180deg);
+  }
+  
+  .dropdown {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 200;
+    padding: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  
+  .option {
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: none;
+    background: none;
+    font-size: 14px;
+    font-family: inherit;
+    color: #1a1a1a;
+    cursor: pointer;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background 0.1s;
+  }
+  
+  .option:hover {
+    background: #f3f4f6;
+  }
+  
+  .option.selected {
+    background: #eef2ff;
+    color: #4f46e5;
+    font-weight: 500;
+  }
+  
+  .checkIcon {
+    font-size: 16px;
+    color: #4f46e5;
+  }

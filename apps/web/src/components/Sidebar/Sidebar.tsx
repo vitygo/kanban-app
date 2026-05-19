@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom'
 import { useAuth } from '@/features/auth'
+import { useBoards } from '@/features/boards/hooks/useBoards'
 import styles from './Sidebar.module.css'
 
 interface SidebarProps {
@@ -9,6 +10,7 @@ interface SidebarProps {
 
 export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
   const { logout, user } = useAuth()
+  const { data: boards } = useBoards()
 
   const initials = user?.name
     ? user.name.split(' ').map((n) => n[0]).join('').toUpperCase().slice(0, 2)
@@ -21,8 +23,7 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
       <aside className={`${styles.sidebar} ${isOpen ? styles.open : ''}`}>
         <div className={styles.logoRow}>
           <NavLink to="/boards" className={styles.logo}>
-       
-            <span>Kanban</span>
+            <span>Kanbloom</span>
           </NavLink>
           <button
             className={styles.closeBtn}
@@ -60,21 +61,23 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
         </nav>
 
         <div className={styles.footer}>
-  <div className={styles.userRow}>
-    <div className={styles.avatar}>{initials}</div>
-    <div className={styles.userInfo}>
-      <div className={styles.userName}>{user?.name}</div>
-      <div className={styles.userMeta}>0 boards</div>
-    </div>
-    <button
-      className={styles.logoutBtn}
-      onClick={logout}
-      aria-label="Sign out"
-    >
-      <i className="ti ti-logout" aria-hidden="true" />
-    </button>
-  </div>
-</div>
+          <div className={styles.userRow}>
+            <div className={styles.avatar}>{initials}</div>
+            <div className={styles.userInfo}>
+              <div className={styles.userName}>{user?.name}</div>
+              <div className={styles.userMeta}>
+                {boards?.length ?? 0} {boards?.length === 1 ? 'board' : 'boards'}
+              </div>
+            </div>
+            <button
+              className={styles.logoutBtn}
+              onClick={logout}
+              aria-label="Sign out"
+            >
+              <i className="ti ti-logout" aria-hidden="true" />
+            </button>
+          </div>
+        </div>
       </aside>
     </>
   )

@@ -10,6 +10,10 @@ const BoardsPage = lazy(() =>
   import('@/pages/BoardsPage').then((m) => ({ default: m.BoardsPage }))
 )
 
+const BoardPage = lazy(() =>
+  import('@/pages/BoardPage').then((m) => ({ default: m.BoardPage }))
+)
+
 export default function App() {
   const initAuth = useAuthStore((s) => s.initAuth)
 
@@ -27,6 +31,7 @@ export default function App() {
           <Route element={<ProtectedRoute />}>
             <Route element={<Layout />}>
               <Route path="/boards" element={<BoardsPage />} />
+              <Route path="/boards/:id" element={<BoardPage />} />
             </Route>
           </Route>
 

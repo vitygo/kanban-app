@@ -22,9 +22,9 @@
   }
   
   .logo {
-    font-size: 18px;
+    font-size: 1.7rem;
     font-weight: 600;
-    color: #6366f1;
+    color: #000000;
     text-decoration: none;
     display: flex;
     align-items: center;

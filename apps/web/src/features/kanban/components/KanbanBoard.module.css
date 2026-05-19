@@ -1,0 +1,67 @@
+.board {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    padding: 4px;
+    align-items: flex-start;
+    min-height: calc(100vh - 120px);
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+  
+  .board::-webkit-scrollbar {
+    height: 6px;
+  }
+  
+  .board::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .board::-webkit-scrollbar-thumb {
+    background: #e5e7eb;
+    border-radius: 3px;
+  }
+  
+  .addColumnBtn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    border: 2px dashed #d1d5db;
+    border-radius: 12px;
+    background: none;
+    color: #9ca3af;
+    font-size: 14px;
+    cursor: pointer;
+    min-width: 280px;
+    transition: all 0.15s;
+    white-space: nowrap;
+    align-self: flex-start;
+    flex-shrink: 0;
+  }
+  
+  .addColumnBtn:hover {
+    border-color: #6366f1;
+    color: #6366f1;
+    background: #eef2ff;
+  }
+  
+  .loading {
+    font-size: 14px;
+    color: #6b7280;
+    padding: 48px;
+  }
+  
+  @media (max-width: 768px) {
+    .board {
+      flex-direction: column;
+      overflow-x: hidden;
+      overflow-y: auto;
+      min-height: unset;
+    }
+  
+    .addColumnBtn {
+      min-width: 100%;
+      width: 100%;
+    }
+  }
