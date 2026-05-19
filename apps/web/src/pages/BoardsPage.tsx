@@ -1,0 +1,1 @@
+export const BoardsPage = () => <div>Boards (coming soon)</div>
