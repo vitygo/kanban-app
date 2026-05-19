@@ -2,13 +2,14 @@ import { NavLink } from 'react-router-dom'
 import { useAuth } from '@/features/auth'
 import { useBoards } from '@/features/boards/hooks/useBoards'
 import styles from './Sidebar.module.css'
-
+import { useThemeStore } from '@/store/themeStore'
 interface SidebarProps {
   isOpen: boolean
   onClose: () => void
 }
 
 export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
+  const { theme, toggleTheme } = useThemeStore()
   const { logout, user } = useAuth()
   const { data: boards } = useBoards()
 
@@ -24,6 +25,7 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
         <div className={styles.logoRow}>
           <NavLink to="/boards" className={styles.logo}>
             <span>Kanbloom</span>
+            
           </NavLink>
           <button
             className={styles.closeBtn}
@@ -58,6 +60,18 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
             <i className={`ti ti-settings ${styles.navIcon}`} aria-hidden="true" />
             <span className={styles.navText}>Settings</span>
           </NavLink>
+          <button
+  className={styles.navItem}
+  onClick={toggleTheme}
+>
+  <i
+    className={`ti ${theme === 'light' ? 'ti-moon' : 'ti-sun'} ${styles.navIcon}`}
+    aria-hidden="true"
+  />
+  <span className={styles.navText}>
+    {theme === 'light' ? 'Dark mode' : 'Light mode'}
+  </span>
+</button>
         </nav>
 
         <div className={styles.footer}>

@@ -1,8 +1,8 @@
 .topbar {
     height: 52px;
     min-height: 52px;
-    background: white;
-    border-bottom: 1px solid #e5e7eb;
+    background: var(--bg-primary);
+    border-bottom: 1px solid var(--border-primary);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -20,7 +20,7 @@
   
   .menuBtn {
     font-size: 20px;
-    color: #6b7280;
+    color: var(--text-secondary);
     background: none;
     border: none;
     cursor: pointer;
@@ -32,14 +32,14 @@
   }
   
   .menuBtn:hover {
-    background: #f3f4f6;
-    color: #1a1a1a;
+    background: var(--bg-hover);
+    color: var(--text-primary);
   }
   
   .title {
     font-size: 15px;
     font-weight: 500;
-    color: #1a1a1a;
+    color: var(--text-primary);
   }
   
   .right {

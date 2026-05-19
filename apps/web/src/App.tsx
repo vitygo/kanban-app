@@ -1,10 +1,12 @@
 import { useEffect, lazy, Suspense } from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { useThemeStore } from '@/store/themeStore'
 import { useAuthStore } from '@/store/authStore'
 import { ProtectedRoute } from '@/components/ProtectedRoute'
 import { LoginPage } from '@/pages/LoginPage'
 import { RegisterPage } from '@/pages/RegisterPage'
 import { Layout } from '@/components/Layout/Layout'
+
 
 const BoardsPage = lazy(() =>
   import('@/pages/BoardsPage').then((m) => ({ default: m.BoardsPage }))
@@ -15,11 +17,14 @@ const BoardPage = lazy(() =>
 )
 
 export default function App() {
+  const initTheme = useThemeStore((s) => s.initTheme)
   const initAuth = useAuthStore((s) => s.initAuth)
 
+  
   useEffect(() => {
     initAuth()
-  }, [])
+    initTheme()
+  }, [])  
 
   return (
     <BrowserRouter>

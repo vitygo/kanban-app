@@ -12,6 +12,25 @@
     -webkit-overflow-scrolling: touch;
   }
   
+  .backBtn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border: 1px solid var(--border-primary);
+    border-radius: 8px;
+    background: none;
+    font-size: 14px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  
+  .backBtn:hover {
+    background: var(--bg-hover);
+    color: var(--text-primary);
+  }
+  
   @media (max-width: 768px) {
     .content {
       padding: 12px;

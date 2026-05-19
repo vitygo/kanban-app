@@ -20,21 +20,7 @@ export const BoardPage = () => {
         title={board?.title ?? 'Board'}
         onMenuClick={onMenuClick}
         actions={
-          <button
-            onClick={() => navigate('/boards')}
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 6,
-              padding: '6px 12px',
-              border: '1px solid #e5e7eb',
-              borderRadius: 8,
-              background: 'none',
-              fontSize: 14,
-              color: '#6b7280',
-              cursor: 'pointer',
-            }}
-          >
+          <button className={styles.backBtn} onClick={() => navigate('/boards')}>
             <i className="ti ti-arrow-left" aria-hidden="true" />
             Boards
           </button>
