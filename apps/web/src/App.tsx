@@ -4,6 +4,7 @@ import { useAuthStore } from '@/store/authStore'
 import { ProtectedRoute } from '@/components/ProtectedRoute'
 import { LoginPage } from '@/pages/LoginPage'
 import { RegisterPage } from '@/pages/RegisterPage'
+import { Layout } from '@/components/Layout/Layout'
 
 const BoardsPage = lazy(() =>
   import('@/pages/BoardsPage').then((m) => ({ default: m.BoardsPage }))
@@ -24,7 +25,9 @@ export default function App() {
           <Route path="/register" element={<RegisterPage />} />
 
           <Route element={<ProtectedRoute />}>
-            <Route path="/boards" element={<BoardsPage />} />
+            <Route element={<Layout />}>
+              <Route path="/boards" element={<BoardsPage />} />
+            </Route>
           </Route>
 
           <Route path="/" element={<Navigate to="/boards" replace />} />
