@@ -55,7 +55,7 @@
   }
   
   .nav {
-    flex: 1;
+ 
     padding: 12px 8px;
     display: flex;
     flex-direction: column;
@@ -202,5 +202,115 @@
   
     .closeBtn {
       display: flex;
+    }
+  }
+
+  .boardsSection {
+    padding: 0 8px;
+    margin-top: 8px;
+    flex: 1;
+    overflow-y: auto;
+  }
+  
+  .boardItem {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .boardLink {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 13px;
+    transition: all 0.12s;
+    cursor: pointer;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+  }
+  
+  .boardLink:hover {
+    background: var(--bg-hover);
+    color: var(--text-primary);
+  }
+  
+  .boardLink.active {
+    background: var(--accent-bg);
+    color: var(--accent-text);
+    font-weight: 500;
+  }
+  
+  .boardDot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  
+  .boardName {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  .expandIcon {
+    font-size: 14px;
+    color: var(--text-tertiary);
+    transition: transform 0.15s;
+    flex-shrink: 0;
+  }
+  
+  .expandIcon.open {
+    transform: rotate(90deg);
+  }
+  
+  .columnsList {
+    padding: 2px 0 4px 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+  
+  .columnLink {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    color: var(--text-tertiary);
+    text-decoration: none;
+    font-size: 12px;
+    transition: all 0.12s;
+    cursor: pointer;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+  }
+  
+  .columnLink:hover {
+    background: var(--bg-hover);
+    color: var(--text-primary);
+  }
+  
+  .columnCount {
+    font-size: 11px;
+    color: var(--text-tertiary);
+    margin-left: auto;
+  }
+  
+  @media (max-width: 768px) {
+    .boardsSection {
+      display: none;
+    }
+  
+    .sidebar.open .boardsSection {
+      display: block;
     }
   }
