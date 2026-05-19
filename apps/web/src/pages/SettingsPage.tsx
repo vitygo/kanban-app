@@ -1,5 +1,5 @@
 import { useOutletContext } from 'react-router-dom'
-import { ProfileForm } from '@/features/settings'
+import { ProfileForm, PasswordForm } from '@/features/settings'
 import { Topbar } from '@/components/Topbar/Topbar'
 import styles from './SettingsPage.module.css'
 
@@ -15,6 +15,7 @@ export const SettingsPage = () => {
       <Topbar title="Settings" onMenuClick={onMenuClick} />
       <div className={styles.page}>
         <ProfileForm />
+        <PasswordForm />
       </div>
     </>
   )

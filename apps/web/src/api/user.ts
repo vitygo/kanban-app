@@ -15,4 +15,8 @@ export const userApi = {
     const res = await apiClient.patch('/me', data)
     return res.data
   },
+
+  changePassword: async (data: { currentPassword: string; newPassword: string }): Promise<void> => {
+    await apiClient.post('/me/password', data)
+  },
 }

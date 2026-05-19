@@ -11,11 +11,9 @@ import { Layout } from '@/components/Layout/Layout'
 const BoardsPage = lazy(() =>
   import('@/pages/BoardsPage').then((m) => ({ default: m.BoardsPage }))
 )
-
 const BoardPage = lazy(() =>
   import('@/pages/BoardPage').then((m) => ({ default: m.BoardPage }))
 )
-
 const SettingsPage = lazy(() =>
   import('@/pages/SettingsPage').then((m) => ({ default: m.SettingsPage }))
 )

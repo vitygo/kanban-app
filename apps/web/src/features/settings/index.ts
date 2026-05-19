@@ -1,2 +1,3 @@
 export { ProfileForm } from './components/ProfileForm'
-export { useProfile, useUpdateProfile } from './hooks/useProfile'
+export { PasswordForm } from './components/PasswordForm'
+export { useProfile, useUpdateProfile, useChangePassword } from './hooks/useProfile'

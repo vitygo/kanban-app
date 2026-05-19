@@ -5,4 +5,10 @@ export const updateUserSchema = z.object({
   email: z.string().email().optional(),
 })
 
+export const changePasswordSchema = z.object({
+  currentPassword: z.string().min(1),
+  newPassword: z.string().min(8, 'Minimum 8 characters'),
+})
+
 export type UpdateUserInput = z.infer<typeof updateUserSchema>
+export type ChangePasswordInput = z.infer<typeof changePasswordSchema>

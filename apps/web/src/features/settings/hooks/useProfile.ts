@@ -12,7 +12,6 @@ export const useProfile = () => {
 
 export const useUpdateProfile = () => {
   const queryClient = useQueryClient()
-  const setAuth = useAuthStore((s) => s.setAuth)
 
   return useMutation({
     mutationFn: userApi.updateMe,
@@ -23,6 +22,18 @@ export const useUpdateProfile = () => {
     },
     onError: (err: any) => {
       toast.error(err.response?.data?.error ?? 'Failed to update profile')
+    },
+  })
+}
+
+export const useChangePassword = () => {
+  return useMutation({
+    mutationFn: userApi.changePassword,
+    onSuccess: () => {
+      toast.success('Password changed')
+    },
+    onError: (err: any) => {
+      toast.error(err.response?.data?.error ?? 'Failed to change password')
     },
   })
 }
