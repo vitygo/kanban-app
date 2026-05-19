@@ -16,6 +16,10 @@ const BoardPage = lazy(() =>
   import('@/pages/BoardPage').then((m) => ({ default: m.BoardPage }))
 )
 
+const SettingsPage = lazy(() =>
+  import('@/pages/SettingsPage').then((m) => ({ default: m.SettingsPage }))
+)
+
 export default function App() {
   const initTheme = useThemeStore((s) => s.initTheme)
   const initAuth = useAuthStore((s) => s.initAuth)
@@ -37,6 +41,7 @@ export default function App() {
             <Route element={<Layout />}>
               <Route path="/boards" element={<BoardsPage />} />
               <Route path="/boards/:id" element={<BoardPage />} />
+              <Route path="/settings" element={<SettingsPage />} />
             </Route>
           </Route>
 

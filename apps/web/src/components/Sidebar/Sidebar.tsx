@@ -134,6 +134,16 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
               {theme === 'light' ? 'Dark mode' : 'Light mode'}
             </span>
           </button>
+          <NavLink
+  to="/settings"
+  onClick={onClose}
+  className={({ isActive }) =>
+    `${styles.navItem} ${isActive ? styles.active : ''}`
+  }
+>
+  <i className={`ti ti-settings ${styles.navIcon}`} aria-hidden="true" />
+  <span className={styles.navText}>Settings</span>
+</NavLink>
           
         </nav>
         {boards && boards.length > 0 && (

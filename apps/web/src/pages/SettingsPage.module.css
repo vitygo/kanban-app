@@ -1,0 +1,19 @@
+.page {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  
+  .title {
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+  
+  @media (max-width: 768px) {
+    .page {
+      padding: 16px;
+    }
+  }
+  
