@@ -98,8 +98,7 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
       <aside className={`${styles.sidebar} ${isOpen ? styles.open : ''}`}>
         <div className={styles.logoRow}>
           <NavLink to="/boards" className={styles.logo}>
-            <i className="ti ti-layout-kanban" aria-hidden="true" />
-            <span>Kanban</span>
+            <span>Kanbloom</span>
           </NavLink>
           <button
             className={styles.closeBtn}

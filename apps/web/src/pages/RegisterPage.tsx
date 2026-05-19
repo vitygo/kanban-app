@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom'
 import { RegisterForm } from '@/features/auth'
+import { AuthTopbar } from '@/components/AuthTopbar/AuthTopbar'
 import styles from './LoginPage.module.css'
 
 export const RegisterPage = () => (
   <div className={styles.page}>
+    <AuthTopbar />
     <div className={styles.card}>
       <h1 className={styles.title}>Sign up</h1>
       <RegisterForm />
