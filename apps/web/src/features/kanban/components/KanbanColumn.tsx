@@ -1,9 +1,10 @@
-import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable'
+import { SortableContext, verticalListSortingStrategy, useSortable } from '@dnd-kit/sortable'
+import { CSS } from '@dnd-kit/utilities'
 import { useDroppable } from '@dnd-kit/core'
+import { toast } from 'sonner'
 import { KanbanCard } from './KanbanCard'
 import type { Column, Card } from '@/api'
 import styles from './KanbanColumn.module.css'
-import { toast } from 'sonner'
 
 interface KanbanColumnProps {
   column: Column
@@ -22,12 +23,35 @@ export const KanbanColumn = ({
   onDeleteColumn,
   onEditColumn,
 }: KanbanColumnProps) => {
-  const { setNodeRef } = useDroppable({ id: column.id })
+  const { setNodeRef: setDroppableRef } = useDroppable({ id: column.id })
+
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    transition,
+    isDragging,
+  } = useSortable({
+    id: `column-${column.id}`,
+    data: { type: 'column', column },
+  })
+
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+    opacity: isDragging ? 0.5 : 1,
+  }
 
   return (
-    <div className={styles.column}>
-      <div className={styles.header}>
+    <div
+      ref={setNodeRef}
+      style={style}
+      className={styles.column}
+    >
+      <div className={styles.header} {...attributes} {...listeners}>
         <div className={styles.titleRow}>
+          <i className={`ti ti-grip-vertical ${styles.dragHandle}`} aria-hidden="true" />
           <span className={styles.title}>{column.title}</span>
           <span className={styles.count}>{column.cards.length}</span>
         </div>
@@ -40,27 +64,27 @@ export const KanbanColumn = ({
             <i className="ti ti-edit" aria-hidden="true" />
           </button>
           <button
-  className={`${styles.actionBtn} ${styles.deleteBtn}`}
-  onClick={() => {
-    toast('Delete this column and all its cards?', {
-      action: {
-        label: 'Delete',
-        onClick: () => onDeleteColumn(column.id),
-      },
-      cancel: {
-        label: 'Cancel',
-        onClick: () => {},
-      },
-    })
-  }}
-  aria-label="Delete column"
->
-  <i className="ti ti-trash" aria-hidden="true" />
-</button>
+            className={`${styles.actionBtn} ${styles.deleteBtn}`}
+            onClick={() => {
+              toast('Delete this column and all its cards?', {
+                action: {
+                  label: 'Delete',
+                  onClick: () => onDeleteColumn(column.id),
+                },
+                cancel: {
+                  label: 'Cancel',
+                  onClick: () => {},
+                },
+              })
+            }}
+            aria-label="Delete column"
+          >
+            <i className="ti ti-trash" aria-hidden="true" />
+          </button>
         </div>
       </div>
 
-      <div ref={setNodeRef} className={styles.cards}>
+      <div ref={setDroppableRef} className={styles.cards}>
         <SortableContext
           items={column.cards.map((c) => c.id)}
           strategy={verticalListSortingStrategy}

@@ -16,12 +16,27 @@
     align-items: center;
     justify-content: space-between;
     padding: 0 4px;
+    cursor: grab;
+  }
+  
+  .header:active {
+    cursor: grabbing;
   }
   
   .titleRow {
     display: flex;
     align-items: center;
     gap: 8px;
+  }
+
+  .dragHandle {
+    font-size: 16px;
+    color: var(--text-tertiary);
+    cursor: grab;
+  }
+  
+  .dragHandle:active {
+    cursor: grabbing;
   }
   
   .title {
@@ -109,3 +124,4 @@
       max-height: unset;
     }
   }
+
