@@ -22,7 +22,7 @@ const getAccentColor = (id: string) => {
 }
 
 const BoardItem = ({ board, onClose }: { board: { id: string; title: string }; onClose: () => void }) => {
-  const [expanded, setExpanded] = useState(false)
+  const [expanded, setExpanded] = useState(true)
   const navigate = useNavigate()
   const location = useLocation()
   const isActive = location.pathname === `/boards/${board.id}`
