@@ -5,21 +5,23 @@ import type { User } from '@/api'
 interface AuthState {
   user: User | null
   isAuthenticated: boolean
-
   setAuth: (user: User, accessToken: string, refreshToken: string) => void
+  setUser: (user: User) => void
   logout: () => void
-  initAuth: () => void
+  initAuth: () => Promise<void>
 }
 
 export const useAuthStore = create<AuthState>((set) => ({
   user: null,
   isAuthenticated: !!tokenStorage.getAccess(),
-  isInitialized: false,
-
 
   setAuth: (user, accessToken, refreshToken) => {
     tokenStorage.setTokens(accessToken, refreshToken)
     set({ user, isAuthenticated: true })
+  },
+
+  setUser: (user) => {
+    set({ user })
   },
 
   logout: () => {
@@ -27,10 +29,26 @@ export const useAuthStore = create<AuthState>((set) => ({
     set({ user: null, isAuthenticated: false })
   },
 
-
-  initAuth: () => {
+  initAuth: async () => {
     const token = tokenStorage.getAccess()
-    if (token) {
+    if (!token) {
+      set({ isAuthenticated: false })
+      return
+    }
+
+    try {
+      const res = await fetch('/api/me', {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+
+      if (res.ok) {
+        const user = await res.json()
+        set({ user, isAuthenticated: true })
+      } else {
+        tokenStorage.clear()
+        set({ user: null, isAuthenticated: false })
+      }
+    } catch {
       set({ isAuthenticated: true })
     }
   },
