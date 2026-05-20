@@ -1,7 +1,6 @@
 .layout {
     display: flex;
     height: 100vh;
-    overflow: hidden;
     background: var(--bg-secondary);
   }
   
@@ -9,12 +8,12 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
-    overflow: hidden;
     min-width: 0;
+    overflow: hidden;
   }
   
   .main {
     flex: 1;
-    overflow: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
