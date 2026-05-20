@@ -37,7 +37,8 @@ export const useAuthStore = create<AuthState>((set) => ({
     }
 
     try {
-      const res = await fetch('/api/me', {
+        const baseUrl = import.meta.env.VITE_API_URL ? `${import.meta.env.VITE_API_URL}/api` : '/api'
+        const res = await fetch(`${baseUrl}/me`, {
         headers: { Authorization: `Bearer ${token}` },
       })
 
