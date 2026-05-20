@@ -18,6 +18,14 @@
     align-items: center;
     gap: 24px;
   }
+
+  @media (max-width: 768px) {
+ 
+    .card {
+        background: unset;
+        box-shadow: unset;
+    }
+  }
   
   .title {
     font-size: 24px;
@@ -37,3 +45,4 @@
     text-decoration: none;
     font-weight: 500;
   }
+

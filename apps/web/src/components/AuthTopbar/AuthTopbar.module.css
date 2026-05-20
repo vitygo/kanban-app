@@ -8,7 +8,6 @@
     left: 0;
     right: 0;
     background: var(--bg-primary);
-    border-bottom: 1px solid var(--border-primary);
   }
   
   .logo {
@@ -19,7 +18,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    background: linear-gradient(135deg, #059669 0%, #0ea5e9 20%, rgb(116, 116, 116) 100%);
+    background: linear-gradient(135deg, #059669 0%, #0ea5e9 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
