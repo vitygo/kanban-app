@@ -3,8 +3,11 @@ import { useOutletContext } from 'react-router-dom'
 import { useBoards} from '@/features/boards/hooks/useBoards'
 import { BoardCard } from '@/features/boards/components/BoardCard'
  import {  CreateBoardModal } from '@/features/boards/components/CreateBoardModal'
+import {   BoardsHeader } from '@/features/boards/components/BoardsHeader'
 import { Topbar } from '@/components/Topbar/Topbar'
 import styles from './BoardsPage.module.css'
+
+
 
 interface OutletContext {
   onMenuClick: () => void
@@ -72,16 +75,25 @@ export const BoardsPage = () => {
           </div>
         )}
 
-        {filtered && filtered.length === 0 && boards && boards.length > 0 && (
-          <div className={styles.state}>No boards match "{search}"</div>
-        )}
+        {boards && boards.length > 0 && (
+          <>
+            <BoardsHeader boards={boards} />
 
-        {filtered && filtered.length > 0 && (
-          <div className={styles.grid}>
-            {filtered.map((board) => (
-              <BoardCard key={board.id} board={board} />
-            ))}
-          </div>
+            {filtered && filtered.length === 0 && (
+              <div className={styles.state}>No boards match "{search}"</div>
+            )}
+
+            {filtered && filtered.length > 0 && (
+              <>
+                <div className={styles.sectionTitle}>Your boards</div>
+                <div className={styles.grid}>
+                  {filtered.map((board) => (
+                    <BoardCard key={board.id} board={board} />
+                  ))}
+                </div>
+              </>
+            )}
+          </>
         )}
       </div>
 

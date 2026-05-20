@@ -31,6 +31,12 @@
     color: var(--text-primary);
   }
   
+  .sectionTitle {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+  }
   @media (max-width: 768px) {
     .content {
       padding: 12px;

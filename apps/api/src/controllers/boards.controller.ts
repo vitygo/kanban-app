@@ -3,16 +3,41 @@ import { prisma } from '../lib/prisma'
 import { AuthRequest } from '../middleware/auth.middleware'
 
 export const getBoards = async (req: AuthRequest, res: Response) => {
-  try {
-    const boards = await prisma.board.findMany({
-      where: { userId: req.userId! },
-      orderBy: { createdAt: 'desc' },
-    })
-    return res.json(boards)
-  } catch {
-    return res.status(500).json({ error: 'Internal server error' })
+    try {
+      const boards = await prisma.board.findMany({
+        where: { userId: req.userId! },
+        orderBy: { createdAt: 'desc' },
+        include: {
+          columns: {
+            select: {
+              id: true,
+              title: true,
+              _count: { select: { cards: true } },
+            },
+          },
+          _count: { select: { columns: true } },
+        },
+      })
+  
+      const result = boards.map((board) => ({
+        id: board.id,
+        title: board.title,
+        description: board.description,
+        createdAt: board.createdAt,
+        columnCount: board._count.columns,
+        cardCount: board.columns.reduce((sum, col) => sum + col._count.cards, 0),
+        columns: board.columns.map((col) => ({
+          id: col.id,
+          title: col.title,
+          cardCount: col._count.cards,
+        })),
+      }))
+  
+      return res.json(result)
+    } catch {
+      return res.status(500).json({ error: 'Internal server error' })
+    }
   }
-}
 
 export const createBoard = async (req: AuthRequest, res: Response) => {
   try {

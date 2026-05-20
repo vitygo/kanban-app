@@ -66,6 +66,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     gap: 16px;
+    margin-top: 1rem;
   }
   
   .state {
@@ -114,6 +115,8 @@
   .newBtn:hover {
     opacity: 0.9;
   }
+
+  
   
   @media (max-width: 768px) {
     .page {

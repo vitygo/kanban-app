@@ -1,10 +1,19 @@
 import { apiClient } from './client'
 
+export interface BoardColumn {
+  id: string
+  title: string
+  cardCount: number
+}
+
 export interface Board {
   id: string
   title: string
   description?: string
   createdAt: string
+  columnCount: number
+  cardCount: number
+  columns: BoardColumn[]
 }
 
 export const boardsApi = {
@@ -13,7 +22,7 @@ export const boardsApi = {
     return res.data
   },
 
-  getById: async (id: string): Promise<Board> => {
+  getById: async (id: string) => {
     const res = await apiClient.get(`/boards/${id}`)
     return res.data
   },
