@@ -41,7 +41,7 @@ export const LoginForm = () => {
       </div>
 
       <div className={styles.field}>
-        <label className={styles.label}>Пароль</label>
+        <label className={styles.label}>Password</label>
         <input
           {... register('password')}
           type="password"
