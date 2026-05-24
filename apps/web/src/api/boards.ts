@@ -21,7 +21,6 @@ export const boardsApi = {
     const res = await apiClient.get('/boards')
     return res.data
   },
-
   getById: async (id: string) => {
     const res = await apiClient.get(`/boards/${id}`)
     return res.data

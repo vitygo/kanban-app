@@ -26,6 +26,7 @@ import { columnsApi } from '@/api'
 import { useQueryClient } from '@tanstack/react-query'
 import type { Card, Column } from '@/api'
 import styles from './KanbanBoard.module.css'
+import { KanbanBoardSkeleton } from './KanbanBoardSkeleton'
 
 interface KanbanBoardProps {
   boardId: string
@@ -146,7 +147,7 @@ export const KanbanBoard = ({ boardId }: KanbanBoardProps) => {
     setColumnModal(null)
   }
 
-  if (isLoading) return <div className={styles.loading}>Loading...</div>
+  if (isLoading) return <KanbanBoardSkeleton />
   if (!board) return <div className={styles.loading}>Board not found</div>
 
   return (

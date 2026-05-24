@@ -60,7 +60,7 @@ export const LoginForm = () => {
         className={styles.button}
         disabled={isLoading}
       >
-        {isLoading ? 'loading...' : 'Enter'}
+     {isLoading ? <i className="ti ti-loader-2 spin" aria-hidden="true" /> : 'Sign in'}
       </button>
     </form>
   )

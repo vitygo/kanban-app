@@ -6,7 +6,7 @@ import { BoardCard } from '@/features/boards/components/BoardCard'
 import {   BoardsHeader } from '@/features/boards/components/BoardsHeader'
 import { Topbar } from '@/components/Topbar/Topbar'
 import styles from './BoardsPage.module.css'
-
+import { BoardCardSkeleton } from '@/features/boards/components/BoardCardSkeleton'
 
 
 interface OutletContext {
@@ -59,7 +59,13 @@ export const BoardsPage = () => {
       />
 
       <div className={styles.page}>
-        {isLoading && <div className={styles.state}>Loading...</div>}
+      {isLoading && (
+  <div className={styles.grid}>
+    {Array.from({ length: 6 }).map((_, i) => (
+      <BoardCardSkeleton key={i} />
+    ))}
+  </div>
+)}
 
         {isError && (
           <div className={styles.state}>Something went wrong. Try again.</div>

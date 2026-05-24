@@ -5,6 +5,7 @@ import { useBoards } from '@/features/boards/hooks/useBoards'
 import { useBoard } from '@/features/kanban'
 import { useThemeStore } from '@/store/themeStore'
 import styles from './Sidebar.module.css'
+import { Skeleton } from '@/components/Skeleton/Skeleton'
 
 interface SidebarProps {
   isOpen: boolean
@@ -145,7 +146,17 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
 </NavLink>
           
         </nav>
-        {boards && boards.length > 0 && (
+        {!boards && (
+  <div className={styles.boardsSection}>
+    <span className={styles.navLabel}>Boards</span>
+    {Array.from({ length: 3 }).map((_, i) => (
+      <div key={i} style={{ padding: '6px 10px' }}>
+        <Skeleton height={14} width={`${60 + i * 15}%`} />
+      </div>
+    ))}
+  </div>
+)}
+{boards && boards.length > 0 && (
           <div className={styles.boardsSection}>
             <span className={styles.navLabel}>Boards</span>
             {boards.map((board) => (
@@ -156,24 +167,36 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
 
      
 
-        <div className={styles.footer}>
-          <div className={styles.userRow}>
-            <div className={styles.avatar}>{initials}</div>
-            <div className={styles.userInfo}>
-              <div className={styles.userName}>{user?.name}</div>
-              <div className={styles.userMeta}>
-                {boards?.length ?? 0} {boards?.length === 1 ? 'board' : 'boards'}
-              </div>
-            </div>
-            <button
-              className={styles.logoutBtn}
-              onClick={logout}
-              aria-label="Sign out"
-            >
-              <i className="ti ti-logout" aria-hidden="true" />
-            </button>
+<div className={styles.footer}>
+  <div className={styles.userRow}>
+    {user ? (
+      <>
+        <div className={styles.avatar}>{initials}</div>
+        <div className={styles.userInfo}>
+          <div className={styles.userName}>{user.name}</div>
+          <div className={styles.userMeta}>
+            {boards?.length ?? 0} {boards?.length === 1 ? 'board' : 'boards'}
           </div>
         </div>
+        <button
+          className={styles.logoutBtn}
+          onClick={logout}
+          aria-label="Sign out"
+        >
+          <i className="ti ti-logout" aria-hidden="true" />
+        </button>
+      </>
+    ) : (
+      <>
+        <Skeleton width={34} height={34} borderRadius="50%" />
+        <div className={styles.userInfo}>
+          <Skeleton height={14} width={80} />
+          <Skeleton height={12} width={50} />
+        </div>
+      </>
+    )}
+  </div>
+</div>
       </aside>
     </>
   )

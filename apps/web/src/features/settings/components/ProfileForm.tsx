@@ -5,6 +5,8 @@ import { z } from 'zod'
 import { useProfile, useUpdateProfile } from '../hooks/useProfile'
 import styles from './ProfileForm.module.css'
 import { format } from 'date-fns'
+import { Skeleton } from '@/components/Skeleton/Skeleton'
+
 
 const schema = z.object({
   name: z.string().min(2, 'Minimum 2 characters').max(50),
@@ -32,7 +34,22 @@ export const ProfileForm = () => {
     reset(data)
   }
 
-  if (isLoading) return <div className={styles.card}>Loading...</div>
+ if (isLoading) return (
+  <div className={styles.card}>
+    <Skeleton height={20} width={100} />
+    <Skeleton height={14} width={180} />
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 16, marginTop: 20 }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+        <Skeleton height={14} width={40} />
+        <Skeleton height={40} borderRadius={8} />
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+        <Skeleton height={14} width={40} />
+        <Skeleton height={40} borderRadius={8} />
+      </div>
+    </div>
+  </div>
+)
 
   return (
     <div className={styles.card}>

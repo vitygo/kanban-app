@@ -57,7 +57,7 @@ export const RegisterForm = () => {
       {error && <div className={styles.submitError}>{error}</div>}
 
       <button type="submit" className={styles.button} disabled={isLoading}>
-        {isLoading ? 'Loading...' : 'Sign up'}
+      {isLoading ? <i className="ti ti-loader-2 spin" aria-hidden="true" /> : 'Sign up'}
       </button>
     </form>
   )
