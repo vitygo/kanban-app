@@ -13,7 +13,7 @@
   }
   
   .label {
-    font-size: 14px;
+    font-size: 0.875rem;
     font-weight: 500;
     color: var(--text-primary);
   }
@@ -22,7 +22,7 @@
     padding: 10px 14px;
     border: 1px solid var(--border-secondary);
     border-radius: 8px;
-    font-size: 14px;
+    font-size: 0.875rem;
     outline: none;
     transition: border-color 0.15s;
     background: var(--bg-primary);
@@ -38,12 +38,12 @@
   }
   
   .fieldError {
-    font-size: 12px;
+    font-size: 0.75rem;
     color: var(--danger);
   }
   
   .submitError {
-    font-size: 13px;
+    font-size: 0.8125rem;
     color: var(--danger-text);
     text-align: center;
     padding: 8px;
@@ -57,7 +57,7 @@
     color: white;
     border: none;
     border-radius: 8px;
-    font-size: 14px;
+    font-size: 0.875rem;
     font-weight: 500;
     cursor: pointer;
     transition: opacity 0.15s;

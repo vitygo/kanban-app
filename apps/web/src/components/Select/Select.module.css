@@ -7,7 +7,7 @@
     padding: 10px 14px;
     border: 1px solid var(--border-secondary);
     border-radius: 8px;
-    font-size: 14px;
+    font-size: 0.875rem;
     font-family: inherit;
     background: var(--bg-primary);
     cursor: pointer;
@@ -27,7 +27,7 @@
   }
   
   .arrow {
-    font-size: 16px;
+    font-size: 1rem;
     color: var(--text-secondary);
     transition: transform 0.15s;
   }
@@ -57,7 +57,7 @@
     border-radius: 6px;
     border: none;
     background: none;
-    font-size: 14px;
+    font-size: 0.875rem;
     font-family: inherit;
     color: var(--text-primary);
     cursor: pointer;
@@ -79,6 +79,6 @@
   }
   
   .checkIcon {
-    font-size: 16px;
+    font-size: 1rem;
     color: var(--accent-text);
   }

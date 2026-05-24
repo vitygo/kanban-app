@@ -22,13 +22,13 @@
   }
   
   .title {
-    font-size: 15px;
+    font-size: 0.9375rem;
     font-weight: 500;
     color: var(--text-primary);
   }
   
   .description {
-    font-size: 13px;
+    font-size: 0.8125rem;
     color: var(--text-secondary);
     overflow: hidden;
     text-overflow: ellipsis;
@@ -38,7 +38,7 @@
     display: flex;
     align-items: center;
     gap: 4px;
-    font-size: 12px;
+    font-size: 0.75rem;
     color: var(--text-tertiary);
   }
   
@@ -49,7 +49,7 @@
   }
   
   .metaItem i {
-    font-size: 14px;
+    font-size: 0.875rem;
   }
   
   .metaDot {
@@ -64,7 +64,7 @@
   }
   
   .date {
-    font-size: 12px;
+    font-size: 0.75rem;
     color: var(--text-tertiary);
   }
   
@@ -81,7 +81,7 @@
   }
   
   .actionBtn {
-    font-size: 16px;
+    font-size: 1rem;
     color: var(--text-tertiary);
     background: none;
     border: none;

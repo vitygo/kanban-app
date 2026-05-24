@@ -25,7 +25,7 @@
   }
   
   .searchIcon {
-    font-size: 16px;
+    font-size: 1rem;
     color: var(--text-tertiary);
     flex-shrink: 0;
   }
@@ -35,7 +35,7 @@
     padding: 0;
     border: none;
     outline: none;
-    font-size: 13px;
+    font-size: 0.8125rem;
     font-family: inherit;
     background: none;
     color: var(--text-primary);
@@ -46,7 +46,7 @@
   }
   
   .clearBtn {
-    font-size: 14px;
+    font-size: 0.875rem;
     color: var(--text-tertiary);
     background: none;
     border: none;
@@ -70,7 +70,7 @@
   }
   
   .state {
-    font-size: 14px;
+    font-size: 0.875rem;
     color: var(--text-secondary);
     text-align: center;
     padding: 48px 0;
@@ -90,7 +90,7 @@
   }
   
   .empty p {
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 500;
     color: var(--text-secondary);
   }
@@ -104,7 +104,7 @@
     color: white;
     border: none;
     border-radius: 8px;
-    font-size: 13px;
+    font-size: 0.8125rem;
     font-weight: 500;
     cursor: pointer;
     transition: opacity 0.15s;

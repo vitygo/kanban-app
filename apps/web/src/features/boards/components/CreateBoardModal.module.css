@@ -29,13 +29,13 @@
   }
   
   .title {
-    font-size: 18px;
+    font-size: 1.125rem;
     font-weight: 600;
     color: var(--text-primary);
   }
   
   .closeBtn {
-    font-size: 20px;
+    font-size: 1.25rem;
     color: var(--text-tertiary);
     background: none;
     border: none;
@@ -65,7 +65,7 @@
   }
   
   .label {
-    font-size: 14px;
+    font-size: 0.875rem;
     font-weight: 500;
     color: var(--text-primary);
   }
@@ -74,7 +74,7 @@
     padding: 10px 14px;
     border: 1px solid var(--border-secondary);
     border-radius: 8px;
-    font-size: 14px;
+    font-size: 0.875rem;
     outline: none;
     transition: border-color 0.15s;
     font-family: inherit;
@@ -96,7 +96,7 @@
   }
   
   .fieldError {
-    font-size: 12px;
+    font-size: 0.75rem;
     color: var(--danger);
   }
   
@@ -111,7 +111,7 @@
     border: 1px solid var(--border-primary);
     border-radius: 8px;
     background: none;
-    font-size: 14px;
+    font-size: 0.875rem;
     color: var(--text-secondary);
     cursor: pointer;
     transition: all 0.15s;
@@ -126,7 +126,7 @@
     border: none;
     border-radius: 8px;
     background: var(--accent);
-    font-size: 14px;
+    font-size: 0.875rem;
     font-weight: 500;
     color: white;
     cursor: pointer;

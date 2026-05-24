@@ -28,7 +28,7 @@
   }
   
   .title {
-    font-size: 13px;
+    font-size: 0.8125rem;
     font-weight: 500;
     color: var(--text-primary);
     line-height: 1.4;
@@ -48,7 +48,7 @@
   }
   
   .actionBtn {
-    font-size: 14px;
+    font-size: 0.875rem;
     color: var(--text-tertiary);
     background: none;
     border: none;
@@ -71,7 +71,7 @@
   }
   
   .description {
-    font-size: 12px;
+    font-size: 0.75rem;
     color: var(--text-secondary);
     line-height: 1.4;
     display: -webkit-box;
