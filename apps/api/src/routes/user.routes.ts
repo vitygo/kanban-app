@@ -8,3 +8,5 @@ export const userRouter = Router()
 userRouter.get('/me', getMe)
 userRouter.patch('/me', validate(updateUserSchema), updateMe)
 userRouter.post('/me/password', validate(changePasswordSchema), changePassword)
+
+

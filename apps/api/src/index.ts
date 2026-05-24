@@ -20,7 +20,7 @@ app.use('/api', authMiddleware)
 app.use('/api', userRouter)
 app.use('/api', columnsRouter)
 app.use('/api', cardsRouter)
-app.use('/api/boards', boardsRouter)
+app.use('/api', boardsRouter)
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`)

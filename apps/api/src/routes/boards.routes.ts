@@ -3,8 +3,8 @@ import { getBoards, createBoard, getBoardById, updateBoard, deleteBoard } from '
 
 export const boardsRouter = Router()
 
-boardsRouter.get('/', getBoards)
-boardsRouter.post('/', createBoard)
-boardsRouter.get('/:id', getBoardById)
-boardsRouter.patch('/:id', updateBoard)
-boardsRouter.delete('/:id', deleteBoard)
+boardsRouter.get('/boards', getBoards)
+boardsRouter.post('/boards', createBoard)
+boardsRouter.get('/boards/:id', getBoardById)
+boardsRouter.patch('/boards/:id', updateBoard)
+boardsRouter.delete('/boards/:id', deleteBoard)
