@@ -11,16 +11,11 @@
   }
   
   .logo {
-    font-size: 2rem;
+    font-size: 1.2rem;
     font-weight: 600;
     color: var(--accent);
     text-decoration: none;
     display: flex;
     align-items: center;
     gap: 8px;
-    background: linear-gradient(135deg, #059669 0%, #0ea5e9 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
   }

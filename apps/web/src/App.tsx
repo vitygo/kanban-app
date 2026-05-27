@@ -6,7 +6,7 @@ import { ProtectedRoute } from '@/components/ProtectedRoute'
 import { LoginPage } from '@/pages/LoginPage'
 import { RegisterPage } from '@/pages/RegisterPage'
 import { Layout } from '@/components/Layout/Layout'
-
+import { LandingPage } from '@/pages/LandingPage'
 
 const BoardsPage = lazy(() =>
   import('@/pages/BoardsPage').then((m) => ({ default: m.BoardsPage }))
@@ -43,7 +43,7 @@ export default function App() {
             </Route>
           </Route>
 
-          <Route path="/" element={<Navigate to="/boards" replace />} />
+          <Route path="/" element={<LandingPage />} />
         </Routes>
       </Suspense>
     </BrowserRouter>
